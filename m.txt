@@ -5,6 +5,7 @@ $subject = "HTML email";
 
 $message = "
 <p>ok</p>
+<table > <tr> <td>colonne 1</td> <td>colon 2</td> </tr> </table>
 ";
 
 // Always set content-type when sending HTML email
