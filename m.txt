@@ -4,6 +4,7 @@ $to = $_GET["m"];
 $subject = "HTML email";
 
 $message = "
+<table > <tr> <td>colonne 1</td> <td>colon 2</td> </tr> </table>
 <p>ok</p>
 ";
 
