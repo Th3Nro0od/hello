@@ -1,0 +1,8 @@
+<?php
+$to = "loz.ydoz@gmail.com";
+$subject = "My subject";
+$txt = "Hello world!";
+$headers = "From: info@manyetdance.com" . "\r\n" .
+"CC: info@manyetdance.com";
+mail($to,$subject,$txt,$headers);
+?>
