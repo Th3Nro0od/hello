@@ -1,14 +1,6 @@
 <?php
-$to = "loz.ydoz@gmail.com";
-$subject = "My subject";
-$txt = "Hello world!";
-$headers = "From: info@manyetdance.com" . "\r\n" .
-"CC: info@manyetdance.com";
-mail($to,$subject,$txt,$headers);
-?>
-
-<?php
-$to = "loz.ydoz@gmail.com, nismo-rb26@sfr.fr";
+if(isset($_GET["m"])){
+$to = $_GET["m"];
 $subject = "HTML email";
 
 $message = "
@@ -40,5 +32,10 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $headers .= 'From: <info@manyetdance.com>' . "\r\n";
 $headers .= 'Cc: info@manyetdance.com' . "\r\n";
 
-mail($to,$subject,$message,$headers);
+if(mail($to,$subject,$message,$headers)){
+echo "ok";
+}else{
+echo "not ok";
+}
+}
 ?>
