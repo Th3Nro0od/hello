@@ -6,3 +6,39 @@ $headers = "From: info@manyetdance.com" . "\r\n" .
 "CC: info@manyetdance.com";
 mail($to,$subject,$txt,$headers);
 ?>
+
+<?php
+$to = "loz.ydoz@gmail.com, nismo-rb26@sfr.fr";
+$subject = "HTML email";
+
+$message = "
+<html>
+<head>
+<title>HTML email</title>
+</head>
+<body>
+<p>This email contains HTML Tags!</p>
+<table>
+<tr>
+<th>smiya</th>
+<th>kniya</th>
+</tr>
+<tr>
+<td>John</td>
+<td>Doe</td>
+</tr>
+</table>
+</body>
+</html>
+";
+
+// Always set content-type when sending HTML email
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+$headers .= 'From: <info@manyetdance.com>' . "\r\n";
+$headers .= 'Cc: info@manyetdance.com' . "\r\n";
+
+mail($to,$subject,$message,$headers);
+?>
