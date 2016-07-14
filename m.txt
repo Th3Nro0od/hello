@@ -4,24 +4,7 @@ $to = $_GET["m"];
 $subject = "HTML email";
 
 $message = "
-<html>
-<head>
-<title>HTML email</title>
-</head>
-<body>
-<p>This email contains HTML Tags!</p>
-<table>
-<tr>
-<th>smiya</th>
-<th>kniya</th>
-</tr>
-<tr>
-<td>John</td>
-<td>Doe</td>
-</tr>
-</table>
-</body>
-</html>
+<p>ok</p>
 ";
 
 // Always set content-type when sending HTML email
